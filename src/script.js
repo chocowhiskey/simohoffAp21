@@ -33,27 +33,66 @@ material.color = new THREE.Color("rgb(0,37,61)");
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-// Lights
-
+/* ************************ Lights ************************ */
+// Light 1
 const pointLight = new THREE.PointLight(0xffffff, 0.4);
-pointLight.position.x = 2;
+pointLight.position.x = -2.91;
 pointLight.position.y = 3;
-pointLight.position.z = 4;
+pointLight.position.z = 1.38;
+pointLight.intensity = 2.4;
 scene.add(pointLight);
 
-const pointLight2 = new THREE.PointLight(0xff0000, 2);
-pointLight2.position.set(1, 1, 1);
-pointLight2.intensity = 1;
+// GUI debugger
+/* const light1 = gui.addFolder("Light 1");
+light1.add(pointLight.position, "x").min(-3).max(3).step(0.01);
+light1.add(pointLight.position, "y").min(-6).max(6).step(0.01);
+light1.add(pointLight.position, "z").min(-6).max(3).step(0.01);
+light1.add(pointLight, "intensity").min(0).max(10).step(0.01);
+
+const pointLight1Helper = new THREE.PointLightHelper(pointLight, 1);
+scene.add(pointLight1Helper); */
+
+// Light 2
+const pointLight2 = new THREE.PointLight(0xb8dc98, 2);
+pointLight2.position.set(1, -1.86, 0.69);
+pointLight2.intensity = 5.5;
 scene.add(pointLight2);
 
 // GUI debugger
-gui.add(pointLight2.position, "x").min(-3).max(3).step(0.01);
-gui.add(pointLight2.position, "y").min(-3).max(3).step(0.01);
-gui.add(pointLight2.position, "z").min(-3).max(3).step(0.01);
+/* const light2 = gui.addFolder("Light 2");
+light2.add(pointLight2.position, "x").min(-3).max(3).step(0.01);
+light2.add(pointLight2.position, "y").min(-6).max(6).step(0.01);
+light2.add(pointLight2.position, "z").min(-6).max(3).step(0.01);
+light2.add(pointLight2, "intensity").min(0).max(10).step(0.01);
 
-/**
- * Sizes
- */
+const pointLight2Helper = new THREE.PointLightHelper(pointLight2, 1);
+scene.add(pointLight2Helper); */
+
+// Light 3
+/* const pointLight3 = new THREE.PointLight(0xb8dc98, 2);
+pointLight3.position.set(1, -1.86, -1.52);
+pointLight3.intensity = 7;
+scene.add(pointLight3);
+
+// GUI debugger
+const light3 = gui.addFolder("Light 3");
+light3.add(pointLight3.position, "x").min(-3).max(3).step(0.01);
+light3.add(pointLight3.position, "y").min(-6).max(6).step(0.01);
+light3.add(pointLight3.position, "z").min(-6).max(3).step(0.01);
+light3.add(pointLight3, "intensity").min(0).max(10).step(0.01);
+
+const light3Color = {
+  color: 0xff0000,
+};
+
+light3.addColor(light3Color, "color").onChange(() => {
+  pointLight3.color.set(light3Color.color);
+});
+
+const pointLight3Helper = new THREE.PointLightHelper(pointLight3, 1);
+scene.add(pointLight3Helper); */
+
+/* ************************ Sizes ************************ */
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -73,9 +112,7 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-/**
- * Camera
- */
+/* ************************ Camera ************************ */
 // Base camera
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -92,9 +129,7 @@ scene.add(camera);
 // const controls = new OrbitControls(camera, canvas)
 // controls.enableDamping = true
 
-/**
- * Renderer
- */
+/* ************************ Renderer ************************ */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   alpha: true,
@@ -102,9 +137,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/**
- * Animate
- */
+/* ************************ Animation ************************ */
 
 const clock = new THREE.Clock();
 
