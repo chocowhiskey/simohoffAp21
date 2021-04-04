@@ -35,11 +35,21 @@ scene.add(sphere);
 
 // Lights
 
-const pointLight = new THREE.PointLight(0xffffff, 0.1);
+const pointLight = new THREE.PointLight(0xffffff, 0.4);
 pointLight.position.x = 2;
 pointLight.position.y = 3;
 pointLight.position.z = 4;
 scene.add(pointLight);
+
+const pointLight2 = new THREE.PointLight(0xff0000, 2);
+pointLight2.position.set(1, 1, 1);
+pointLight2.intensity = 1;
+scene.add(pointLight2);
+
+// GUI debugger
+gui.add(pointLight2.position, "x").min(-3).max(3).step(0.01);
+gui.add(pointLight2.position, "y").min(-3).max(3).step(0.01);
+gui.add(pointLight2.position, "z").min(-3).max(3).step(0.01);
 
 /**
  * Sizes
